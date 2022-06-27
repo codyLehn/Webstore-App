@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Beff Jezos' Store</title>
+  </head>
+  <body>
+    <div id="app">
+      <!-- ============== Welcome Page ================== -->
+      <div id="welcome-page" v-if="page == 'welcome'">
+        <h1>Welcome to Beff Jezos' Store</h1>
+        <button @click="setPage('store')">Enter Store</button>
+      </div>
+      <!-- ======================= Store Page ================== -->
+      <div v-else-if="page == 'store'" id="store-page">
+        <product
+          v-for="(product, index) in products"
+          v-bind:item="product"
+          v-bind:addfunction="addToShoppingCart"
+          v-bind:cart="Vuecart"
+          v-bind:key="index"
+        ></product>
+      </div>
+
+      <!-- ======================Checkout Page ======================== -->
+      <div v-else-if="page == 'checkout'" id="checkout-page"></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
